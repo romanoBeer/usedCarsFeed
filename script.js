@@ -37,26 +37,22 @@ fetch('cars.xml')
 
             // Add a click event listener to the grid item
             gridItem.addEventListener('click', () => {
-                // Create a modal to display the vehicle details
-                const modal = document.createElement('div');
-                modal.classList.add('modal');
-
-                // Add the vehicle details to the modal
-                modal.innerHTML = `
-                    <h2>${make} ${model} (${year})</h2>
-                    <img src="${image}" alt="${make} ${model}">
-                    <p>${specs}</p>
-                    <p>Price: R${price}</p>
-                    <button class="close-button">Close</button>
-                `;
-
-                // Add a click event listener to the close button
-                modal.querySelector('.close-button').addEventListener('click', () => {
-                    modal.remove();
-                });
-
-                // Add the modal to the page
-                document.body.appendChild(modal);
+                // Open a pop-up window with the vehicle details
+                const popup = window.open('', 'Vehicle Details', 'width=600,height=400');
+                popup.document.write(`
+                    <html>
+                        <head>
+                            <title>${make} ${model} (${year})</title>
+                        </head>
+                        <body>
+                            <h2>${make} ${model} (${year})</h2>
+                            <img src="${image}" alt="${make} ${model}">
+                            <p>Mileage: ${mileage}</p>
+                            <p>Price: R${price}</p>
+                            <p>Specs: ${specs}</p>
+                        </body>
+                    </html>
+                `);
             });
 
             // Add the grid item to the grid container
