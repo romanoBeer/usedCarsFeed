@@ -116,9 +116,9 @@
         /* The Close Button */
         .close {
             color: #aaa;
-            float: right;
             font-size: 28px;
             font-weight: bold;
+            float: right;
         }
 
         .close:hover,
@@ -158,6 +158,37 @@
             line-height: 1.5;
             color: #666;
         }
+
+        .modal-content {
+            display: flex;
+        }
+
+        /* Style the modal info */
+        .modal-info {
+            padding-left: 20px;
+            width: 60%;
+        }
+
+        .modal-info h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #333;
+            letter-spacing: 1px;
+        }
+
+        .modal-info p {
+            margin-bottom: 5px;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        .modal-info-2{
+            padding-top: 50px;
+        }
     </style>
 </head>
 
@@ -165,11 +196,10 @@
     <div class="grid-container" id="car-grid"></div>
 
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-        </div>
+        <div class="modal-content"></div>
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </body>
 

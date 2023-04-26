@@ -35,10 +35,14 @@ fetch('cars.xml')
 
             // Add the vehicle details to the grid item
             gridItem.innerHTML = `
-                <h2>${make} ${model} (${year})</h2>
-                <img src="${image}" alt="${make} ${model}">
-                <p>Mileage: ${mileage}</p>
-                <p>Price: R${price}</p>
+                <div class="grid-item-image">
+                    <img src="${image}" alt="${make} ${model}">
+                </div>
+                <div class="grid-item-details">
+                    <h2>${make} ${model} (${year})</h2>
+                    <p>Mileage: ${mileage}</p>
+                    <p>Price: R${price}</p>
+                </div>
             `;
 
             // Add a click event listener to the grid item
@@ -46,12 +50,16 @@ fetch('cars.xml')
                 // Set the modal content
                 modal.innerHTML = `
                     <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <h2>${make} ${model} (${year})</h2>
-                        <img src="${image}" alt="${make} ${model}">
-                        <p>Mileage: ${mileage}</p>
-                        <p>Price: R${price}</p>
-                        <p>Specs: ${specs}</p>
+                        <div class="modal-details">
+                            <h2>${make} ${model} (${year})</h2>
+                            <img src="${image}" alt="${make} ${model}">
+                        </div>
+                        <div class="modal-info">
+                            <div class="close">&times;</div>
+                            <p class="modal-info-2">Mileage: ${mileage}</p>
+                            <p>Price: R${price}</p>
+                            <p>Specs: ${specs}</p>
+                        </div>
                     </div>
                 `;
 
