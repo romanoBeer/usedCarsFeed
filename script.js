@@ -9,6 +9,12 @@ fetch('cars.xml')
         // Get the list of vehicles from the XML document
         const vehicles = xmlDoc.getElementsByTagName('Vehicle');
 
+        // Get the modal element
+        const modal = document.getElementById('modal');
+
+        // Get the close button element
+        const closeButton = document.getElementById('close-button');
+
         // Loop through the vehicles and create a grid item for each one
         for (let i = 0; i < vehicles.length; i++) {
             const vehicle = vehicles[i];
@@ -37,22 +43,42 @@ fetch('cars.xml')
 
             // Add a click event listener to the grid item
             gridItem.addEventListener('click', () => {
-                // Open a pop-up window with the vehicle details
-                const popup = window.open('', 'Vehicle Details', 'width=600,height=400');
-                popup.document.write(`
-                    <html>
-                        <head>
-                            <title>${make} ${model} (${year})</title>
-                        </head>
-                        <body>
-                            <h2>${make} ${model} (${year})</h2>
-                            <img src="${image}" alt="${make} ${model}">
-                            <p>Mileage: ${mileage}</p>
-                            <p>Price: R${price}</p>
-                            <p>Specs: ${specs}</p>
-                        </body>
-                    </html>
-                `);
+                // Set the modal content
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>${make} ${model} (${year})</h2>
+                        <img src="${image}" alt="${make} ${model}">
+                        <p>Mileage: ${mileage}</p>
+                        <p>Price: R${price}</p>
+                        <p>Specs: ${specs}</p>
+                    </div>
+                `;
+
+                // Show the modal
+                modal.style.display = 'block';
+
+                // Get the close button element inside the modal
+                const modalCloseButton = modal.querySelector('.close');
+
+                // Add a click event listener to the close button
+                modalCloseButton.addEventListener('click', () => {
+                    // Hide the modal
+                    modal.style.display = 'none';
+                });
+
+                // Calculate the position of the modal
+                const modalContent = modal.querySelector('.modal-content');
+                const modalWidth = modalContent.offsetWidth;
+                const modalHeight = modalContent.offsetHeight;
+                const screenWidth = window.innerWidth;
+                const screenHeight = window.innerHeight;
+                const left = (screenWidth - modalWidth) / 2;
+                const top = (screenHeight - modalHeight) / 2;
+
+                // Set the position of the modal
+                modalContent.style.left = left + 'px';
+                modalContent.style.top = top + 'px';
             });
 
             // Add the grid item to the grid container
