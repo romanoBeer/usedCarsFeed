@@ -9,7 +9,7 @@ fetch('cars.xml')
         // Get the list of vehicles from the XML document
         const vehicles = xmlDoc.getElementsByTagName('Vehicle');
         const carSearch = document.getElementById('car-search');
-        carSearch.addEventListener('change')
+        // carSearch.addEventListener('change')
         carLoop(vehicles, carCounter)
         
     })
