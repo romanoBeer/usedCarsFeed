@@ -72,7 +72,7 @@ fetch('cars.xml')
 
 const carLoop = (vehicles, carCounter, sortOption) => {
     // Sort the vehicles based on the selected sort option
-    sortCars(vehicles, sortOption);
+    // sortCars(vehicles, sortOption);
     // Get the modal element
     const modal = document.getElementById('modal');
     let counter = 0;
