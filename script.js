@@ -9,12 +9,39 @@ fetch('cars.xml')
         // Get the list of vehicles from the XML document
         const vehicles = xmlDoc.getElementsByTagName('Vehicle');
         const carSearch = document.getElementById('car-search');
+        // Sorts the cars
+        const sortCars = (vehicles, sortOption) => {
+            switch (sortOption) {
+                case 'price-low-to-high':
+                    vehicles.sort((a, b) => {
+                        return parseInt(a.getElementsByTagName('Price')[0].textContent) - parseInt(b.getElementsByTagName('Price')[0].textContent);
+                    });
+                    break;
+                case 'price-high-to-low':
+                    vehicles.sort((a, b) => {
+                        return parseInt(b.getElementsByTagName('Price')[0].textContent) - parseInt(a.getElementsByTagName('Price')[0].textContent);
+                    });
+                    break;
+                case 'mileage-low-to-high':
+                    vehicles.sort((a, b) => {
+                        return parseInt(a.getElementsByTagName('Mileage')[0].textContent) - parseInt(b.getElementsByTagName('Mileage')[0].textContent);
+                    });
+                    break;
+                case 'mileage-high-to-low':
+                    vehicles.sort((a, b) => {
+                        return parseInt(b.getElementsByTagName('Mileage')[0].textContent) - parseInt(a.getElementsByTagName('Mileage')[0].textContent);
+                    });
+                    break;
+                default:
+                    break;
+            }
+        };
         // carSearch.addEventListener('change')
         carLoop(vehicles, carCounter)
     })
     .catch(error => console.error(error));
 
-    // // ChatGPT Search
+// // ChatGPT Search
 // fetch('cars.xml')
 //     .then(response => response.text())
 //     .then(xmlString => {
@@ -43,7 +70,9 @@ fetch('cars.xml')
 //     .catch(error => console.error(error));
 
 
-const carLoop = (vehicles, carCounter) => {
+const carLoop = (vehicles, carCounter, sortOption) => {
+    // Sort the vehicles based on the selected sort option
+    sortCars(vehicles, sortOption);
     // Get the modal element
     const modal = document.getElementById('modal');
     let counter = 0;

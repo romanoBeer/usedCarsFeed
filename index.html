@@ -10,6 +10,15 @@
 </head>
 
 <body>
+    <div id="sort-by">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select">
+            <option value="price-low-to-high">Price: Low to High</option>
+            <option value="price-high-to-low">Price: High to Low</option>
+            <option value="mileage-low-to-high">Mileage: Low to High</option>
+            <option value="mileage-high-to-low">Mileage: High to Low</option>
+        </select>
+    </div>
     <div id="car-counter" style="text-align: right; padding-right: 24px;"></div>
     <input type="text" id="car-search"></input>
     <div class="grid-container" id="car-grid"></div>
