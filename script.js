@@ -8,34 +8,34 @@ fetch('cars.xml')
         const carCounter = document.getElementById('car-counter');
         // Get the list of vehicles from the XML document
         const vehicles = xmlDoc.getElementsByTagName('Vehicle');
-        const carSearch = document.getElementById('car-search');
+        // const carSearch = document.getElementById('car-search');
         // Sorts the cars
-        const sortCars = (vehicles, sortOption) => {
-            switch (sortOption) {
-                case 'price-low-to-high':
-                    vehicles.sort((a, b) => {
-                        return parseInt(a.getElementsByTagName('Price')[0].textContent) - parseInt(b.getElementsByTagName('Price')[0].textContent);
-                    });
-                    break;
-                case 'price-high-to-low':
-                    vehicles.sort((a, b) => {
-                        return parseInt(b.getElementsByTagName('Price')[0].textContent) - parseInt(a.getElementsByTagName('Price')[0].textContent);
-                    });
-                    break;
-                case 'mileage-low-to-high':
-                    vehicles.sort((a, b) => {
-                        return parseInt(a.getElementsByTagName('Mileage')[0].textContent) - parseInt(b.getElementsByTagName('Mileage')[0].textContent);
-                    });
-                    break;
-                case 'mileage-high-to-low':
-                    vehicles.sort((a, b) => {
-                        return parseInt(b.getElementsByTagName('Mileage')[0].textContent) - parseInt(a.getElementsByTagName('Mileage')[0].textContent);
-                    });
-                    break;
-                default:
-                    break;
-            }
-        };
+        // const sortCars = (vehicles, sortOption) => {
+        //     switch (sortOption) {
+        //         case 'price-low-to-high':
+        //             vehicles.sort((a, b) => {
+        //                 return parseInt(a.getElementsByTagName('Price')[0].textContent) - parseInt(b.getElementsByTagName('Price')[0].textContent);
+        //             });
+        //             break;
+        //         case 'price-high-to-low':
+        //             vehicles.sort((a, b) => {
+        //                 return parseInt(b.getElementsByTagName('Price')[0].textContent) - parseInt(a.getElementsByTagName('Price')[0].textContent);
+        //             });
+        //             break;
+        //         case 'mileage-low-to-high':
+        //             vehicles.sort((a, b) => {
+        //                 return parseInt(a.getElementsByTagName('Mileage')[0].textContent) - parseInt(b.getElementsByTagName('Mileage')[0].textContent);
+        //             });
+        //             break;
+        //         case 'mileage-high-to-low':
+        //             vehicles.sort((a, b) => {
+        //                 return parseInt(b.getElementsByTagName('Mileage')[0].textContent) - parseInt(a.getElementsByTagName('Mileage')[0].textContent);
+        //             });
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        // };
         // carSearch.addEventListener('change')
         carLoop(vehicles, carCounter)
     })
@@ -108,10 +108,7 @@ const carLoop = (vehicles, carCounter, sortOption) => {
             `;
 
 
-            // Closes modal on overlay click
-            modal.addEventListener('click', () => {
-                modal.style.display = 'none';
-            })
+
             // Add a click event listener to the grid item
             gridItem.addEventListener('click', () => {
                 // Set the modal content
@@ -137,11 +134,15 @@ const carLoop = (vehicles, carCounter, sortOption) => {
                 const modalCloseButton = modal.querySelector('.close');
 
                 // Add a click event listener to the close button
-                modalCloseButton.addEventListener('click', () => {
+                modalCloseButton.addEventListener('click',() => {
                     // Hide the modal
                     modal.style.display = 'none';
                 });
+                // Closes modal on overlay click
+                modal.addEventListener('keydown' , () => {
+                    modal.style.display = 'none';
 
+                })
                 // Calculate the position of the modal
                 const modalContent = modal.querySelector('.modal-content');
                 const modalWidth = modalContent.offsetWidth;

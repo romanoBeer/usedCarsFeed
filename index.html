@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    <div id="sort-by">
+    <div id="car-counter" style="text-align: right; padding-right: 24px;"></div>
+    <input type="text" id="car-search"></input>
+    <div id="sort-by" style="float:right; margin-right: 24px;">
         <label for="sort-select">Sort by:</label>
         <select id="sort-select">
             <option value="price-low-to-high">Price: Low to High</option>
@@ -19,13 +21,12 @@
             <option value="mileage-high-to-low">Mileage: High to Low</option>
         </select>
     </div>
-    <div id="car-counter" style="text-align: right; padding-right: 24px;"></div>
-    <input type="text" id="car-search"></input>
     <div class="grid-container" id="car-grid"></div>
 
     <div id="modal" class="modal">
-        <div class="modal-content"></div>
+        <div class="modal-content" id="modal-content"></div>
     </div>
+    
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
