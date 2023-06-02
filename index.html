@@ -11,7 +11,6 @@
 
 <body>
     <div id="car-counter" style="text-align: right; padding-right: 24px;"></div>
-    <input type="text" id="car-search"></input>
     <div id="sort-by" style="float:right; margin-right: 24px;">
         <label for="sort-select">Sort by:</label>
         <select id="sort-select">
@@ -21,8 +20,10 @@
             <option value="mileage-high-to-low">Mileage: High to Low</option>
         </select>
     </div>
-    <div class="grid-container" id="car-grid"></div>
+    <input type="text" id="car-search" placeholder="Search Vehicle"></input>
+    
 
+    <div class="grid-container" id="car-grid"></div>
     <div id="modal" class="modal">
         <div class="modal-content" id="modal-content"></div>
     </div>
